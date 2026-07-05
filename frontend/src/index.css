@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+body {
+  background-color: #FBEFEF;
+  color: #6B5B7B;
+  font-family: 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom range slider styles */
+input[type='range'] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  background: #FFE2E2;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #C5B3D3;
+  box-shadow: 0 2px 8px rgba(197, 179, 211, 0.4);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #C5B3D3;
+  box-shadow: 0 2px 8px rgba(197, 179, 211, 0.4);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+input[type='range']::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%           { transform: translateY(-4px); }
+}
+
+.animate-slide-in-right { animation: slide-in-right 200ms ease-out; }
+.animate-fade-up        { animation: fade-up 150ms ease-out; }
+.animate-fade-in        { animation: fade-in 150ms ease-out; }
+
+.typing-dot { animation: typing-dot 1.2s infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* Mood Emoji Picker Cards */
+.mood-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.mood-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mood-card:active {
+  transform: scale(0.95);
+}
+
+/* Mood colors — unselected (muted) */
+.mood-sad       { background: #FFE8E8; color: #9B4D4D; }
+.mood-low       { background: #FFF0E0; color: #8B6B3D; }
+.mood-neutral   { background: #FFF8D6; color: #7B7340; }
+.mood-good      { background: #E0F5E8; color: #3D7B4D; }
+.mood-great     { background: #EDE0F5; color: #5B3D7B; }
+
+/* Mood colors — selected (vivid + border + scale) */
+.mood-card.selected {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mood-sad.selected       { background: #FFCDCD; border-color: #E57373; }
+.mood-low.selected       { background: #FFE0B2; border-color: #FFB74D; }
+.mood-neutral.selected   { background: #FFF3A0; border-color: #FFD54F; }
+.mood-good.selected      { background: #C8E6C9; border-color: #66BB6A; }
+.mood-great.selected     { background: #D1C4E9; border-color: #9C7BD4; }
